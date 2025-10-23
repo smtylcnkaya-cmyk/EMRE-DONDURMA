@@ -1,57 +1,66 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Emre Dondurma</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menü - Tatlılar & Dondurmalar</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>🍦 Emre Dondurma 🍦</h1>
-    <p>Serinletici Tatlar Menüsü</p>
+    <h1>Sweet Point Menü</h1>
+    <nav>
+      <button onclick="showCategory('tatlilar')">Tatlılar</button>
+      <button onclick="showCategory('dondurmalar')">Dondurmalar</button>
+    </nav>
   </header>
 
-  <main class="menu">
-    <div class="item">
-      <h2>Külah Dondurma</h2>
-      <p>2 top (vanilya, çikolata, çilek)</p>
-      <span>60 TL</span>
-    </div>
+  <main id="menu">
+    <!-- Tatlılar -->
+    <section id="tatlilar" class="category active">
+      <div class="item">
+        <img src="images/sufle.jpg" alt="Sufle">
+        <div class="info">
+          <h2>Sufle</h2>
+          <p>Yoğun çikolatalı sıcak sufle, vanilyalı dondurma ile servis edilir.</p>
+          <span class="price">85 ₺</span>
+        </div>
+      </div>
 
-    <div class="item">
-      <h2>Kase Dondurma</h2>
-      <p>3 top, fındık ve çikolata soslu</p>
-      <span>80 TL</span>
-    </div>
+      <div class="item">
+        <img src="images/trilece.jpg" alt="Trileçe">
+        <div class="info">
+          <h2>Trileçe</h2>
+          <p>Karamel soslu, yumuşacık sütlü kek.</p>
+          <span class="price">70 ₺</span>
+        </div>
+      </div>
+    </section>
 
-    <div class="item">
-      <h2>Antep Fıstıklı Özel</h2>
-      <p>Gerçek fıstıkla hazırlanır</p>
-      <span>90 TL</span>
-    </div>
+    <!-- Dondurmalar -->
+    <section id="dondurmalar" class="category">
+      <div class="item">
+        <img src="images/vanilya.jpg" alt="Vanilyalı Dondurma">
+        <div class="info">
+          <h2>Vanilyalı Dondurma</h2>
+          <p>Doğal vanilya özlü, taze sütle hazırlanmış.</p>
+          <span class="price">50 ₺</span>
+        </div>
+      </div>
 
-    <div class="item">
-      <h2>Dondurmalı Waffle</h2>
-      <p>Seçmeli 3 top dondurma, taze meyve</p>
-      <span>120 TL</span>
-    </div>
-
-    <div class="item">
-      <h2>Dondurmalı Krep</h2>
-      <p>Muzlu, çikolatalı soslu</p>
-      <span>100 TL</span>
-    </div>
-
-    <div class="item">
-      <h2>Milkshake</h2>
-      <p>Vanilya veya çikolatalı</p>
-      <span>70 TL</span>
-    </div>
+      <div class="item">
+        <img src="images/cikolata.jpg" alt="Çikolatalı Dondurma">
+        <div class="info">
+          <h2>Çikolatalı Dondurma</h2>
+          <p>Gerçek Belçika çikolatası ile hazırlanmış özel lezzet.</p>
+          <span class="price">55 ₺</span>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <p>© 2025 Emre Dondurma</p>
+    <p>© 2025 Sweet Point</p>
   </footer>
 
   <script src="script.js"></script>
