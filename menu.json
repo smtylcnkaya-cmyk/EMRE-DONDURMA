@@ -1,26 +1,90 @@
-[
-  {
-    "id": "c1",
-    "name": "Mercimek Çorbası",
-    "category": "Çorbalar",
-    "price": "45.00 TL",
-    "description": "Ev usulü mercimek çorbası, taze nane ve limonla.",
-    "image": "images/mercimek.jpg"
-  },
-  {
-    "id": "k1",
-    "name": "Espresso",
-    "category": "İçecekler",
-    "price": "30.00 TL",
-    "description": "Taze çekilmiş espresso.",
-    "image": "images/espresso.jpg"
-  },
-  {
-    "id": "t1",
-    "name": "Cheesecake",
-    "category": "Tatlılar",
-    "price": "55.00 TL",
-    "description": "Kremamsı cheesecake, frambuaz sos ile.",
-    "image": "images/cheesecake.jpg"
-  }
-]
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Örnek Menü</title>
+  <style>
+    /* Basit stiller */
+    body { font-family: system-ui, Arial; margin: 0; padding: 0; }
+    .nav { display:flex; gap:1rem; background:#222; color:#fff; padding:0.5rem 1rem; align-items:center; }
+    .brand { font-weight:700; }
+    .menu { display:flex; gap:0.5rem; list-style:none; margin:0; padding:0; }
+    .menu > li { position:relative; }
+    .menu a { color:#fff; text-decoration:none; padding:0.5rem; display:inline-block; }
+    .dropdown { position:absolute; top:100%; left:0; background:#fff; color:#000; min-width:160px; box-shadow:0 4px 10px rgba(0,0,0,0.15); display:none; z-index:10; }
+    .dropdown a { display:block; padding:0.5rem 1rem; color:inherit; }
+    .menu li:focus-within > .dropdown,
+    .menu li:hover > .dropdown { display:block; }
+    .hamburger { display:none; cursor:pointer; background:transparent; border:none; color:#fff; font-size:1.25rem; }
+    @media (max-width:640px) {
+      .menu { display:none; flex-direction:column; width:100%; background:#333; margin-top:0.5rem; }
+      .menu.show { display:flex; }
+      .hamburger { display:inline-block; }
+      .nav { flex-wrap:wrap; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Ana Menü">
+    <div class="brand">Site Adı</div>
+    <button class="hamburger" aria-expanded="false" aria-controls="main-menu" aria-label="Menüyü aç">☰</button>
+    <ul id="main-menu" class="menu" role="menubar">
+      <li role="none"><a role="menuitem" href="#">Anasayfa</a></li>
+      <li role="none" tabindex="0">
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">Hizmetler ▾</a>
+        <div class="dropdown" role="menu" aria-label="Hizmetler">
+          <a role="menuitem" href="#">Web Geliştirme</a>
+          <a role="menuitem" href="#">Tasarım</a>
+          <a role="menuitem" href="#">Danışmanlık</a>
+        </div>
+      </li>
+      <li role="none"><a role="menuitem" href="#">Blog</a></li>
+      <li role="none"><a role="menuitem" href="#">İletişim</a></li>
+    </ul>
+  </nav>
+
+  <main style="padding:1rem">
+    <h1>Menü Örneği</h1>
+    <p>Menü örneğini mobil/masaüstü görünümünde deneyebilirsiniz. Klavye ile gezinme ve basit açılır menü içerir.</p>
+  </main>
+
+  <script>
+    // Hamburger butonu (mobil)
+    const ham = document.querySelector('.hamburger');
+    const menu = document.getElementById('main-menu');
+    ham && ham.addEventListener('click', () => {
+      const shown = menu.classList.toggle('show');
+      ham.setAttribute('aria-expanded', shown ? 'true' : 'false');
+    });
+
+    // Açılır menü için basit klavye kontrolü (Accessibility)
+    document.querySelectorAll('.menu > li').forEach(li => {
+      const trigger = li.querySelector('a[aria-haspopup]');
+      if (!trigger) return;
+      const dropdown = li.querySelector('.dropdown');
+      trigger.addEventListener('click', e => {
+        e.preventDefault();
+        const expanded = trigger.getAttribute('aria-expanded') === 'true';
+        trigger.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+        if (!expanded) dropdown.style.display = 'block'; else dropdown.style.display = 'none';
+      });
+      // ESC ile kapat
+      li.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+          trigger.setAttribute('aria-expanded', 'false');
+          dropdown.style.display = 'none';
+          trigger.focus();
+        }
+      });
+      // Fareyle dışına tıklayınca kapat
+      document.addEventListener('click', e => {
+        if (!li.contains(e.target) && trigger.getAttribute('aria-expanded') === 'true') {
+          trigger.setAttribute('aria-expanded', 'false');
+          dropdown.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
