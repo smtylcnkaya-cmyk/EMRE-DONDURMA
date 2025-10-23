@@ -1,4 +1,4 @@
  ├── index.html
- ├── menu.json
  ├── style.css
- └── script.js
+ ├── script.js
+ └── menu.json
