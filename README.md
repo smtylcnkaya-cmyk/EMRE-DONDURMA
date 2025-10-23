@@ -1,4 +1,5 @@
-index.html
-menu.json
-style.css
-script.js
+EmreDondurmaMenu/
+ ├── index.html
+ ├── menu.json
+ ├── style.css
+ └── script.js
