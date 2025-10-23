@@ -1,68 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menü - Tatlılar & Dondurmalar</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kafe & Restoran Menüsü</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- QRCode.js (hafif) CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <header>
-    <h1>Sweet Point Menü</h1>
-    <nav>
-      <button onclick="showCategory('tatlilar')">Tatlılar</button>
-      <button onclick="showCategory('dondurmalar')">Dondurmalar</button>
-    </nav>
+  <header class="site-header">
+    <div class="brand">
+      <h1>Lezzet Menüsü</h1>
+      <p class="subtitle">QR ile ulaşılabilen dijital menü</p>
+    </div>
+    <div class="qr-block" aria-hidden="false">
+      <div id="qrcode"></div>
+      <small>Bu QR, buradaki sayfaya yönlendirir. (Paylaşmak için kaydedin)</small>
+      <button id="downloadQrBtn">QR'ı indir</button>
+    </div>
   </header>
 
-  <main id="menu">
-    <!-- Tatlılar -->
-    <section id="tatlilar" class="category active">
-      <div class="item">
-        <img src="images/sufle.jpg" alt="Sufle">
-        <div class="info">
-          <h2>Sufle</h2>
-          <p>Yoğun çikolatalı sıcak sufle, vanilyalı dondurma ile servis edilir.</p>
-          <span class="price">85 ₺</span>
-        </div>
-      </div>
-
-      <div class="item">
-        <img src="images/trilece.jpg" alt="Trileçe">
-        <div class="info">
-          <h2>Trileçe</h2>
-          <p>Karamel soslu, yumuşacık sütlü kek.</p>
-          <span class="price">70 ₺</span>
-        </div>
-      </div>
+  <main class="container">
+    <section class="controls">
+      <input id="search" type="search" placeholder="Ara: çorba, kahve, tatlı..." />
+      <select id="categoryFilter">
+        <option value="all">Tüm Kategoriler</option>
+      </select>
     </section>
 
-    <!-- Dondurmalar -->
-    <section id="dondurmalar" class="category">
-      <div class="item">
-        <img src="images/vanilya.jpg" alt="Vanilyalı Dondurma">
-        <div class="info">
-          <h2>Vanilyalı Dondurma</h2>
-          <p>Doğal vanilya özlü, taze sütle hazırlanmış.</p>
-          <span class="price">50 ₺</span>
-        </div>
-      </div>
-
-      <div class="item">
-        <img src="images/cikolata.jpg" alt="Çikolatalı Dondurma">
-        <div class="info">
-          <h2>Çikolatalı Dondurma</h2>
-          <p>Gerçek Belçika çikolatası ile hazırlanmış özel lezzet.</p>
-          <span class="price">55 ₺</span>
-        </div>
-      </div>
+    <section id="menu" class="menu-grid" aria-live="polite">
+      <!-- JS ile dolacak -->
     </section>
   </main>
 
-  <footer>
-    <p>© 2025 Sweet Point</p>
-  </footer>
+  <!-- Ürün detay modal -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <button class="close" id="closeModal">&times;</button>
+      <img id="modalImg" alt="" />
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+      <div class="modal-meta">
+        <strong id="modalPrice"></strong>
+      </div>
+      <a id="orderLink" class="order-btn" href="#">Telefonla Sipariş Et</a>
+    </div>
+  </div>
 
-  <script src="script.js"></script>
+  <footer class="site-footer">
+    <small>© <span id="year"></span> Lezzet Menüsü</small>
+  </footer>
 </body>
 </html>
