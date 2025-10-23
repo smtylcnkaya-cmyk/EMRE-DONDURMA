@@ -3,54 +3,44 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Kafe & Restoran Menüsü</title>
-  <link rel="stylesheet" href="styles.css" />
-  <!-- QRCode.js (hafif) CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
-  <script src="script.js" defer></script>
+  <title>Gelişmiş Menü Örneği</title>
+  <link rel="stylesheet" href="menu.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="brand">
-      <h1>Lezzet Menüsü</h1>
-      <p class="subtitle">QR ile ulaşılabilen dijital menü</p>
+  <nav class="cmk-menu" aria-label="Ana Menü">
+    <div class="cmk-menu__bar">
+      <div class="cmk-menu__brand">Site Adı</div>
+      <button class="cmk-menu__hamburger" aria-expanded="false" aria-controls="cmk-main-menu" aria-label="Menüyü aç">☰</button>
     </div>
-    <div class="qr-block" aria-hidden="false">
-      <div id="qrcode"></div>
-      <small>Bu QR, buradaki sayfaya yönlendirir. (Paylaşmak için kaydedin)</small>
-      <button id="downloadQrBtn">QR'ı indir</button>
-    </div>
-  </header>
 
-  <main class="container">
-    <section class="controls">
-      <input id="search" type="search" placeholder="Ara: çorba, kahve, tatlı..." />
-      <select id="categoryFilter">
-        <option value="all">Tüm Kategoriler</option>
-      </select>
-    </section>
+    <ul id="cmk-main-menu" class="cmk-menu__list" role="menubar">
+      <li class="cmk-menu__item" role="none"><a role="menuitem" href="#" class="cmk-menu__link">Anasayfa</a></li>
 
-    <section id="menu" class="menu-grid" aria-live="polite">
-      <!-- JS ile dolacak -->
-    </section>
+      <li class="cmk-menu__item has-sub" role="none">
+        <button class="cmk-menu__link cmk-menu__link--button" aria-haspopup="true" aria-expanded="false">Hizmetler ▾</button>
+        <ul class="cmk-submenu" role="menu" aria-label="Hizmetler">
+          <li role="none"><a role="menuitem" href="#" class="cmk-submenu__link">Web Geliştirme</a></li>
+          <li role="none"><a role="menuitem" href="#" class="cmk-submenu__link">Tasarım</a></li>
+          <li role="none" class="has-sub">
+            <button class="cmk-submenu__link cmk-menu__link--button" aria-haspopup="true" aria-expanded="false">Daha Fazla ▸</button>
+            <ul class="cmk-submenu" role="menu" aria-label="Daha Fazla">
+              <li role="none"><a role="menuitem" href="#" class="cmk-submenu__link">Danışmanlık</a></li>
+              <li role="none"><a role="menuitem" href="#" class="cmk-submenu__link">Bakım</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <li class="cmk-menu__item" role="none"><a role="menuitem" href="#" class="cmk-menu__link">Blog</a></li>
+      <li class="cmk-menu__item" role="none"><a role="menuitem" href="#" class="cmk-menu__link">İletişim</a></li>
+    </ul>
+  </nav>
+
+  <main style="padding:1rem">
+    <h1>Gelişmiş Menü Örneği</h1>
+    <p>Mobilde hamburger, çok seviyeli açılır menü, animasyon ve klavye desteği vardır.</p>
   </main>
 
-  <!-- Ürün detay modal -->
-  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
-    <div class="modal-content">
-      <button class="close" id="closeModal">&times;</button>
-      <img id="modalImg" alt="" />
-      <h2 id="modalTitle"></h2>
-      <p id="modalDesc"></p>
-      <div class="modal-meta">
-        <strong id="modalPrice"></strong>
-      </div>
-      <a id="orderLink" class="order-btn" href="#">Telefonla Sipariş Et</a>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <small>© <span id="year"></span> Lezzet Menüsü</small>
-  </footer>
+  <script src="menu.js"></script>
 </body>
 </html>
