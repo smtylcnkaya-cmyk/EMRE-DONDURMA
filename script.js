@@ -1,6 +1,4 @@
-function togglemenu(id) {
-  document.querySelectorAll('.menu-items').forEach(menu => {
-    menu.classList.add('hidden');
-  });
-  document.getElementById(id).classList.toggle('hidden');
+function toggleMenu(id) {
+  const section = document.getElementById(id);
+  section.classList.toggle('hidden');
 }
