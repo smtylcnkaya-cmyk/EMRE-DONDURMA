@@ -1,12 +1,12 @@
 body {
   font-family: 'Poppins', sans-serif;
-  background: #fdfaf6;
+  background: #faffad;
   margin: 0;
-  color: #333;
+  color: #000dbf;
 }
 
 header {
-  background: #4e2c18;
+  background: #ff85f1;
   color: white;
   text-align: center;
   padding: 20px 10px;
