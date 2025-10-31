@@ -4,4 +4,5 @@ EmreDondurmaMenu/
  └── script.js
  └── img
        ├── Antep_Fistikli_Baklava.jpg
-       └── Cevizli_Baklava.jpg
+       ├── Cevizli_Baklava.jpg
+       └── Klasik_Kunefe.jpg
