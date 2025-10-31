@@ -3,5 +3,5 @@ EmreDondurmaMenu/
  ├── style.css
  └── script.js
  └── img
-      ├──Antep Fıstıklı Baklava.jpg
-      └──Cevizli Baklava.jpg
+      ├── Antep Fıstıklı Baklava.jpg
+      └── Cevizli Baklava.jpg
